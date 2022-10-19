@@ -1,0 +1,22 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.infoContainer{
+    margin:  auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 200px;
+    padding: auto;
+}
+
+.detailImg{
+    height: 200px;
+    background-color: aquamarine;
+    margin: auto;
+}
+.detailInfo{
+    text-align: left;
+    margin: 1px auto;
+}

@@ -1,0 +1,22 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.imgApi{
+    height: 200px;background-color: aquamarine;
+}
+.mainContainer{
+    margin-top: 100px;
+    display: flex;
+}
+.mapContainer{
+    height: auto;
+    background-color: rgb(111, 70, 16);
+    /* border-style: solid 1px black   ; */
+    margin: 2px auto;
+    display: block;
+    width: 200px;
+    
+    
+}

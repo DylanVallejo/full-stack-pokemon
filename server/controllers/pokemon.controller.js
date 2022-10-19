@@ -12,6 +12,12 @@ module.exports.getPokemons = (request, response) => {
     .catch(err => response.json(err))
 }
 
+module.exports.getOnePokemon = (request, response ) => {
+    Pokemon.findOne({_id:request.params.id})
+    .then(singlePokemon => response.json(singlePokemon))
+    .catch(err => response.json(err))
+}
+
 module.exports.createPokemon = (request, response) => {
     const { name, description, type, evolution, height, weight, image} = request.body;
     Pokemon.create({
@@ -26,3 +32,4 @@ module.exports.createPokemon = (request, response) => {
     .then(pokemon => response.json(pokemon))
     .catch(err => response.json(err));
 }
+
