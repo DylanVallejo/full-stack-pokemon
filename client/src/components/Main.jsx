@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import styles from './Main.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-export default () => {
+const Main =  () => {
     // const [ message, setMessage ] = useState("Loading...")
-    const [pokemon, setPokemon] = useState([])
+    const [pokemon, setPokemon] = useState([]);
+    const [search, setSearch] = useState(" ");
     
     const navigate = useNavigate();
     useEffect(()=>{
@@ -13,26 +14,28 @@ export default () => {
                 console.log(res.data)
                 setPokemon(res.data)
             })       
-    }, [pokemon]);
+    }, []);
+    
+    
+
     return (
         <div className={styles.mainContainer}>
-
+                {/* <input/> */}
+                <input onChange={event=>{setSearch(event.target.value)}} className={styles.searchBar} />
                 {pokemon.map((key, index)=>{
                     return (
                         <div className={styles.mapContainer} key={index}>
-                            <img className={styles.imgApi} src={key.image}/>
+                            <img className={styles.imgApi} src={key.image} alt="pokemons"/>
                             <h2 >
                                 {key.name}
                             </h2>
                             <p>{key.description}</p>
-                            <button className='cardDetailBtn' onClick={()=>{navigate('api/'+ key._id)}}>Detalles</button>
-                            
+                            <button className={styles.cardDetailBtn} onClick={()=>{navigate('api/'+ key._id)}}>Detalles</button>
                         </div>
-                    )
-                })
-                }
-                
+                    )})
+                };
         </div>
     )
 }
 
+export default Main;

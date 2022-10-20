@@ -19,12 +19,12 @@ module.exports.getOnePokemon = (request, response ) => {
 }
 
 module.exports.createPokemon = (request, response) => {
-    const { name, description, type, evolution, height, weight, image} = request.body;
+    const { name, description, types, evolutions, height, weight, image} = request.body;
     Pokemon.create({
         name,
         description,
-        type, 
-        evolution,
+        types, 
+        evolutions,
         height,
         weight,
         image
