@@ -9,13 +9,15 @@ module.exports.index = (request, response) => {
 module.exports.getPokemons = (request, response) => {
     Pokemon.find({})
     .then(pokemon => response.json(pokemon))
-    .catch(err => response.json(err))
+    .catch(err => response.status(400).json(err))
+    // .catch(err => response.json(err))
 }
 
 module.exports.getOnePokemon = (request, response ) => {
     Pokemon.findOne({_id:request.params.id})
     .then(singlePokemon => response.json(singlePokemon))
-    .catch(err => response.json(err))
+    .catch(err => response.status(400).json(err))
+    // .catch(err => response.json(err))
 }
 
 module.exports.createPokemon = (request, response) => {
@@ -30,6 +32,7 @@ module.exports.createPokemon = (request, response) => {
         image
     })
     .then(pokemon => response.json(pokemon))
-    .catch(err => response.json(err));
+    // .catch(err => response.json(err));
+    .catch(err => response.status(400).json(err))
 }
 

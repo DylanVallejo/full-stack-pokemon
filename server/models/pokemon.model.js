@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
     const PokemonSchema = new mongoose.Schema({
-        name: { type: String, required:[true,"Specify the pokemon name "] },
-        description: { type: String, required:[true,"Add a description for the pokemon"] },
+        name: { type: String, required:[true,"you need to specify the pokemon name"] },
+        description: { type: String, required:[true,"You need to add a description for the pokemon"] },
         type: {type: String,},
         evolution: {type: String},
         height: {type: Number},

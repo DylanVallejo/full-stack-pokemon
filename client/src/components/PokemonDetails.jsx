@@ -11,6 +11,7 @@ export default () => {
     const  {idPokemon} = useParams();
     const [data, setData] = useState([]);    
     const [url, setUrl] = useState(`http://localhost:8000/api/${idPokemon}`)
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate();
     
     
@@ -20,9 +21,9 @@ export default () => {
             console.log(res.data)
             setData(res.data)
         })
-        .catch(err =>console.log(err))
-        
-    
+        .catch(err=>{
+            console.log(err)    
+        })  
     }, [])
     
     

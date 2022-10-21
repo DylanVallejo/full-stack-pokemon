@@ -6,6 +6,7 @@ const Main =  () => {
     // const [ message, setMessage ] = useState("Loading...")
     const [pokemon, setPokemon] = useState([]);
     const [search, setSearch] = useState(" ");
+    const [errors, setErrors] = useState([])
     
     const navigate = useNavigate();
     useEffect(()=>{
@@ -13,7 +14,10 @@ const Main =  () => {
             .then(res=>{
                 console.log(res.data)
                 setPokemon(res.data)
-            })       
+            })      
+            .catch(err=>{
+                console.log(err)    
+            })  
     }, []);
     
     
