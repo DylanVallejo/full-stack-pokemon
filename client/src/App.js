@@ -12,7 +12,6 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
-          {/* <Route path = '/' element={<Header/>}/> */}
           <Route path='/' element={<Main/>}/>
           <Route path='/api/:idPokemon' element={<PokemonDetails/>}/>
         </Routes>

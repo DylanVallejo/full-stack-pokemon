@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Main.module.css';
 import axios from 'axios';
+import { Card } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 const Main =  () => {
     // const [ message, setMessage ] = useState("Loading...")
@@ -19,25 +21,26 @@ const Main =  () => {
                 console.log(err)    
             })  
     }, []);
-    
-    
-
     return (
         <div className={styles.mainContainer}>
-                {/* <input/> */}
-                <input onChange={event=>{setSearch(event.target.value)}} className={styles.searchBar} />
+                <div className={styles.searchContainer}>
+                    <label htmlFor="searchBar">Search</label>
+                    <input onChange={event=>{setSearch(event.target.value)}} className={styles.searchBar} />
+                </div>
                 {pokemon.map((key, index)=>{
                     return (
                         <div className={styles.mapContainer} key={index}>
                             <img className={styles.imgApi} src={key.image} alt="pokemons"/>
-                            <h2 >
-                                {key.name}
-                            </h2>
-                            <p>{key.description}</p>
-                            <button className={styles.cardDetailBtn} onClick={()=>{navigate('api/'+ key._id)}}>Detalles</button>
+                            <div className={styles.infoContainer}>
+                                <h2 className={styles.infoTitle} >
+                                    {key.name}
+                                </h2>
+                                <p>{key.description}</p>
+                                <Button variant="primary" className={styles.cardDetailBtn} onClick={()=>{navigate('api/'+ key._id)}}>Detalles</Button>
+                            </div>
                         </div>
                     )})
-                };
+                }
         </div>
     )
 }

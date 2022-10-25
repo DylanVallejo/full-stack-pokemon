@@ -7,8 +7,7 @@ const mongoose = require('mongoose');
         height: {type: Number},
         weight: {type: Number},
         image: {type: String},
-        
-    }, { timestamps: true, versionKey: false });    
+    }, { timestamps: true, versionKey: false });
 
 const Pokemon = mongoose.model('Pokemon', PokemonSchema);
 
