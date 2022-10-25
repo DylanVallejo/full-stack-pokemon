@@ -29,6 +29,8 @@
     0 0 5px #fff,
     0 0 10px #38ff13,
     0 0 40px #38ff13;
+    cursor: pointer;
+    
 }
 .headerDevName{
     overflow: fit-content;
@@ -62,20 +64,13 @@
 
     @media screen and (max-width: 800px) {
         .headerContainer a{
-            /* grid-column: 2 / 4;
-            grid-row: 1;
-            grid-column: 1 / 4;
-            grid-row: 1; */
-            /* grid-template-columns: repeat(1, 1fr);  
-            gap: 10px;
-            grid-auto-rows: minmax(100px, auto); */
             display: block;
-            font-size: 0.5em;
+            font-size: 0.8em;
             width: 100%;
         }
         .referencesList a:hover{
             transition: color #52d053;
-            font-size: 0.6em;
+            font-size: 0.9em;
             -webkit-transition: all 0.2s ease;
             -moz-transition: all 0.2s ease;
             -o-transition: all 0.2s ease;
@@ -85,6 +80,4 @@
             height: 60px;
             width: 60px;
         }
-        
-        
     }

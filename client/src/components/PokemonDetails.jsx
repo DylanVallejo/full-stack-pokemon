@@ -35,7 +35,7 @@ const  PokemonDetails =  () => {
     return(
         <div className={styles.infoMainContainer}>
             <div className={styles.detailImgContainer}>
-                <h2>Name:{data.name}</h2>
+                {/* <h2>{data.name}</h2> */}
                 <img className={styles.detailImg} src={data.image} alt="pokemons"/>
             </div>
             <div className={styles.detailInfoContainer}>
@@ -43,27 +43,31 @@ const  PokemonDetails =  () => {
                 <table className={styles.tableData}>
                     <tbody>
                         <tr>
-                            <th>Properties</th>
-                            <th>values</th>
+                            <th>{data.name}</th>
                         </tr>
                         <tr>
-                            <td><span className={styles.spanLines}>Description</span></td>
-                            <td><span className={styles.spanLines}>Description</span></td>
-                            <td><span className={styles.spanLines}>Description</span></td>
+                            <th><span className={styles.spanLines}>Description</span></th>
+                            <td><p className={styles.descriptionPkmn}>{data.description}</p></td>
                         </tr>
                         <tr>
-                            <td><p>{data.description}</p></td>
-                            <td><p>{data.description}</p></td>
-                            <td><p>{data.description}</p></td>
+                            <th><span className={styles.spanLines}>Types</span></th>
+                            <td><p className={styles.descriptionPkmn}>{data.type}</p></td>
+                        </tr>
+                        <tr>
+                            <th><span className={styles.spanLines}>Evolutions</span></th>
+                            <td><p className={styles.descriptionPkmn}>{data.evolution}</p></td>
+                        </tr>
+                        <tr>
+                            <th><span className={styles.spanLines}>Height(ft.)</span></th>
+                            <td><p className={styles.descriptionPkmn}>{data.height}</p></td>
+                        </tr>
+                        <tr>
+                            <th><span className={styles.spanLines}>Weight(Kg.)</span></th>
+                            <td><p className={styles.descriptionPkmn}>{data.weight}</p></td>
                         </tr>
                     </tbody>
                 </table>
-                <p><span className={styles.spanLines}>Description</span>: {data.description}</p>
-                <p><span className={styles.spanLines}>Type</span>: {data.type}</p>
-                <p><span className={styles.spanLines}>Evolutions</span>: {data.evolution}</p>
-                <p><span className={styles.spanLines}>Height</span>: {data.height}</p>
-                <p><span className={styles.spanLines}>Weight</span>: {data.weight}</p>
-                <Button className={styles.detailBtn} onClick={()=>{navigate('/')}}>Back</Button>            
+                <Button className={styles.detailBtn} onClick={()=>{navigate('/')}}>Home</Button>            
             </div>
         </div>
     )

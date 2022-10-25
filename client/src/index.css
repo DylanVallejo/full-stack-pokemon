@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-/* #root{
-  height: auto;
-  background-color: black;
-}
 html{
-  background-color: blue;
-} */
+  background: linear-gradient(1000deg, #00C9FF 0%, #cbf7ce 100%);
+}

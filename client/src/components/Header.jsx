@@ -1,23 +1,22 @@
 import styles from './Header.module.css'
-import { HashLink } from 'react-router-hash-link';
+import { useNavigate } from 'react-router-dom';
+
 
 const Header = () => {
     
-    
+    const navigate = useNavigate();
     
     return(
         <header id="headerSection" className={styles.headerContainer}>
-        <h1 className='headerDevName'>
-            <HashLink to=""><img  alt='Logo'  src={require('../img/eva-l.png')  } className={styles.imgLogo } /></HashLink>                
-        </h1>
-        <nav className={styles.referencesList}>
-            <ul>
-                <li><HashLink to="">About</HashLink></li>
-                <li><HashLink smooth to="">Proyects</HashLink></li>
-                <li><HashLink smooth to="">Contact</HashLink></li>
-            </ul>
-        </nav>
-    </header>  
+            <h1 className='headerDevName'>
+                <a onClick={()=>{navigate('/')}}><img  alt='Logo'  src={require('../img/eva-l.png')  } className={styles.imgLogo } /></a>                
+            </h1>
+            <nav className={styles.referencesList}>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/dylan-vallejo" target="_blank">Contact</a></li>
+                </ul>
+            </nav>
+        </header>  
     )
 } 
 
