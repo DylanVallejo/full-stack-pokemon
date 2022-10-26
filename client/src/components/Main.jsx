@@ -8,12 +8,14 @@ const Main =  () => {
     
     const [pokemon, setPokemon] = useState([]);
     const [search, setSearch] = useState(" ");
+    const [a, setA] = useState(0);
+    const [b, setB] = useState(10);
     const navigate = useNavigate();
+    
     
     useEffect(()=>{
         axios.get("http://localhost:8000/api")
             .then(res=>{
-                console.log(res.data)
                 setPokemon(res.data)
             })      
             .catch(err=>{
@@ -21,15 +23,27 @@ const Main =  () => {
             })  
     }, []);
     
+    const nextData =  (a,b) => {
+        setA(a+10) 
+        setB(b+10)
+    }
+    const previousData = (a,b) => {
+        setA(a-10) 
+        setB(b-10)
+    }
+    
     return (
         <div className={styles.mainContainer}>
             
             <div className={styles.searchContainer}>
                 <label htmlFor="searchBar">Search</label>
                 <input onChange={event=>{setSearch(event.target.value)}} className={styles.searchBar} />
+                <button className={styles.paginationBtN} onClick={() =>{previousData(a, b)}}>prev</button>
+                <button className={styles.paginationBtN} onClick={() =>{nextData(a, b)}}>next</button>
+                
             </div>
             
-            {pokemon.slice(0, 10).filter((val) => {
+            {pokemon.slice(a,b).filter((val) => {
                 if (search === " " ){
                     return val
                 }else if (val.name.toLowerCase().includes(search.toLowerCase()) || (val.type.toLowerCase().includes(search.toLowerCase())) ){

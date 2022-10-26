@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import styles from './PokemonDetails.module.css';
-
 import axios from "axios";
 
 
@@ -13,15 +12,12 @@ const  PokemonDetails =  () => {
     const {idPokemon} = useParams();
     const [data, setData] = useState([]);  
     const url = `http://localhost:8000/api/${idPokemon}`
-    // const [url, setUrl] = useState(`http://localhost:8000/api/${idPokemon}`)
-    // const [errors, setErrors] = useState([])
     const navigate = useNavigate();
     
     
     useEffect(() => {
         axios.get(url)
         .then( res =>{
-            console.log(res.data)
             setData(res.data)
         })
         .catch(err=>{
@@ -35,7 +31,6 @@ const  PokemonDetails =  () => {
     return(
         <div className={styles.infoMainContainer}>
             <div className={styles.detailImgContainer}>
-                {/* <h2>{data.name}</h2> */}
                 <img className={styles.detailImg} src={data.image} alt="pokemons"/>
             </div>
             <div className={styles.detailInfoContainer}>
@@ -62,7 +57,7 @@ const  PokemonDetails =  () => {
                             <td><p className={styles.descriptionPkmn}>{data.height}</p></td>
                         </tr>
                         <tr>
-                            <th><span className={styles.spanLines}>Weight(Kg.)</span></th>
+                            <th><span className={styles.spanLines}>Weight(Lbs.)</span></th>
                             <td><p className={styles.descriptionPkmn}>{data.weight}</p></td>
                         </tr>
                     </tbody>

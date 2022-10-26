@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Pokemon API created for the kruger challange",
+    "description": "this API is created to handle the data interaction whit the data base",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api",
+      "description": "this endpoint handle all the pokemon stored in the data base"
+    },
+    {
+      "url": "http://localhost:8000/api/pokemonId",
+      "description": "this endpoint handle the data from one pokemon"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "All Pokemons"
+        ],
+        "summary": "return all the pokemon in the data base",
+        "description": "return all the pokemons on the data base",
+        "responses": {
+          "200": {
+            "description": "(Ok) the pokemon information was obtained successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "12u39e"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Pikachu"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Small pokemon overloaded whit energy"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "fire"
+                    },
+                    "evolution": {
+                      "type": "string",
+                      "example": "raichu"
+                    },
+                    "height": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "weight": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "https://www.pikachuimage.com/front-view"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/{idPokemon}": {
+      "get": {
+        "tags": [
+          "Get one Pokemon by Id"
+        ],
+        "summary": "Return a pokemon by id",
+        "description": "Return an object whit all the data of the pokemon",
+        "parameters": [
+          {
+            "name": "idPokemon",
+            "in": "path",
+            "required": true,
+            "description": "Return the all the properties of the requested pokemon",
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(Ok) the pokemon information was obtained successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "12u39e"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Pikachu"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Small pokemon overloaded whit energy"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "fire"
+                    },
+                    "evolution": {
+                      "type": "string",
+                      "example": "raichu"
+                    },
+                    "height": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "weight": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "https://www.pikachuimage.com/front-view"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "NotFound": {
+        "description": "(NotFound) Information does not exist"
+      },
+      "BadRequest": {
+        "description": "(Bad Request) the information sent is incorrect"
+      },
+      "ServerError": {
+        "description": "Server error"
+      }
+    },
+    "parameters": {
+      "id": {
+        "in": "path",
+        "name": "_id",
+        "description": "pokemon id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "GetOnePokemon": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "integer",
+            "enum": [
+              1
+            ],
+            "description": "the request was correct"
+          },
+          "name": {
+            "type": "string",
+            "description": "Pokemon array of objects"
+          },
+          "description": {
+            "type": "string",
+            "description": "Pokemon description"
+          },
+          "type": {
+            "type": "string",
+            "description": "Pokemon types"
+          },
+          "evolution": {
+            "type": "string",
+            "description": "Pokemon evolutions"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Pokemon height"
+          },
+          "weight": {
+            "type": "integer",
+            "description": "Pokemon weight"
+          },
+          "image": {
+            "type": "string",
+            "description": "Pokemon url image"
+          }
+        }
+      },
+      "GetAllPokemon": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "integer",
+            "enum": [
+              1
+            ],
+            "description": "the request was correct"
+          },
+          "name": {
+            "type": "string",
+            "description": "Pokemon array of objects"
+          },
+          "description": {
+            "type": "string",
+            "description": "Pokemon description"
+          },
+          "type": {
+            "type": "string",
+            "description": "Pokemon types"
+          },
+          "evolution": {
+            "type": "string",
+            "description": "Pokemon evolutions"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Pokemon height"
+          },
+          "weight": {
+            "type": "integer",
+            "description": "Pokemon weight"
+          },
+          "image": {
+            "type": "string",
+            "description": "Pokemon url image"
+          }
+        }
+      }
+    }
+  }
+}
